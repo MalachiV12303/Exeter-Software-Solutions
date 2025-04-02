@@ -39,7 +39,7 @@ a {
 
 nav {
   z-index: 10;
-  position: absolute;
+  position: fixed;
 }
 
 #homeNav {
