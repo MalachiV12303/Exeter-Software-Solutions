@@ -20,12 +20,16 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100svh;
+}
+
 body {
 	background: linear-gradient(-45deg, #ffffff, crimson, #087ea8, #7120b3);
   background-size: 400% 400%;
 	animation: backgroundAnim 15s ease infinite;
   width: screen;
-  height: 100svh;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
 }
