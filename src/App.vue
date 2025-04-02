@@ -22,7 +22,7 @@ import { RouterView, RouterLink } from 'vue-router';
 
 <style>
 main {
-  will-change: opacity, transform;
+  will-change: opacity;
   height: 100%;
   width: 100%;
 }
@@ -31,7 +31,6 @@ a {
   color: black;
   font-size: 1.5rem;
   text-decoration: none;
-  transition: color 2s ease-in-out
 }
 
 .white{
