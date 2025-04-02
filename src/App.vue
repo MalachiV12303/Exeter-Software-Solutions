@@ -7,9 +7,9 @@ import { RouterView, RouterLink } from 'vue-router';
     <RouterLink to="/" class='cinzel' :class="{ 'white': $route.path !== '/'}">.EXETER</RouterLink>
   </nav>
   <nav id='pageNav'>
-    <RouterLink to="/company" active-class>company</RouterLink>
-    <RouterLink to="/members">members</RouterLink>
-    <RouterLink to="/idealogy">idealogy</RouterLink>
+    <RouterLink to="/company" class='navAnim' active-class="activeNav">company</RouterLink>
+    <RouterLink to="/members" class='navAnim' active-class="activeNav">members</RouterLink>
+    <RouterLink to="/idealogy" class='navAnim' active-class="activeNav">idealogy</RouterLink>
   </nav>
   <main>
     <RouterView v-slot="{ Component }">
@@ -55,11 +55,10 @@ nav {
   left: 15%;
   display: flex;
   flex-direction: column;
-
 }
 
-#pageNav a:before,
-#pageNav a:after {
+.navAnim:before,
+.navAnim:after {
   display: inline-block;
   opacity: 0;
   -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
@@ -67,7 +66,7 @@ nav {
   transition: transform 0.3s, opacity 0.2s;
 }
 
-#pageNav a:before {
+.navAnim:before {
   margin-right: 10px;
   content: '[';
   -webkit-transform: translateX(20px);
@@ -75,7 +74,7 @@ nav {
   transform: translateX(20px);
 }
 
-#pageNav a:after {
+.navAnim:after {
   margin-left: 10px;
   content: ']';
   -webkit-transform: translateX(-20px);
@@ -83,10 +82,18 @@ nav {
   transform: translateX(-20px);
 }
 
-#pageNav a:hover:before,
-#pageNav a:hover:after,
-#pageNav a:focus:before,
-#pageNav a:focus:after {
+.navAnim:hover:before,
+.navAnim:hover:after,
+.navAnim:focus:before,
+.navAnim:focus:after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
+/* this keeps the effect present when on page */
+.activeNav:before, .activeNav:after{
   opacity: 1;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
