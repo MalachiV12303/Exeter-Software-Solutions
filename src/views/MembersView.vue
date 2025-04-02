@@ -5,7 +5,8 @@
 </template>
 
 <style scoped>
-section{
+section {
     background-color: crimson;
+    height: 150svh;
 }
 </style>
