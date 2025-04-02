@@ -1,6 +1,9 @@
 <template>
     <section>
         <svg width='100%' height='100%' preserveAspectRatio='xMidYMid slice'>
+            <filter id='noiseFilter'>
+                <feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='8' stitchTiles='stitch' />
+            </filter>
             <defs>
                 <mask id="textMask" x="0" y="0" width="100%" height="100%">
                     <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
@@ -15,7 +18,7 @@
 </template>
 
 <style scoped>
-text{
+text {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -29,7 +32,7 @@ text{
     font-size: 10rem;
 }
 
-#logoSub{
+#logoSub {
     font-size: 2.5rem;
     letter-spacing: 3px;
 }
