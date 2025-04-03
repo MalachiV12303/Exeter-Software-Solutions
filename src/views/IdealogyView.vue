@@ -6,6 +6,6 @@
 
 <style scoped>
 section {
-    background-color: #2F2D2E;
+    background-color: var(--idealogy-bg);
 }
 </style>
