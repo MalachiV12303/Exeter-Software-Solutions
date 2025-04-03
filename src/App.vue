@@ -4,7 +4,8 @@ import { RouterView, RouterLink } from 'vue-router';
 
 <template>
   <nav id='homeNav' class="noSelect">
-    <RouterLink to="/" class='cinzel' :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">
+    <RouterLink to="/" class='cinzel'
+      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">
       .EXETER</RouterLink>
   </nav>
   <nav id='pageNav' class="noSelect">
@@ -16,6 +17,7 @@ import { RouterView, RouterLink } from 'vue-router';
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">members</RouterLink>
   </nav>
   <main>
+    <!-- <div id='grid'></div> -->
     <RouterView v-slot="{ Component }">
       <Transition name='fade' mode="out-in">
         <component :is="Component" />
@@ -25,6 +27,14 @@ import { RouterView, RouterLink } from 'vue-router';
 </template>
 
 <style>
+#grid {
+  position: fixed;
+  border: 1px solid var(--black);
+  width: 50%;
+  height: 100%;
+  z-index: 40;
+}
+
 main {
   will-change: opacity;
   height: 100%;
@@ -32,8 +42,7 @@ main {
 }
 
 a {
-  color: black;
-  font-size: 1.5rem;
+  color: var(--black);
   text-decoration: none;
   transition: color 1s linear;
 }
@@ -41,21 +50,53 @@ a {
 nav {
   z-index: 10;
   position: fixed;
+  display: flex;
+  flex-direction: column;
 }
 
 #homeNav {
-  top: 0;
-  left: 0;
-  padding: 2rem 4rem;
+  font-size: 2rem;
+  top: 2%;
+  left: 2%;
 }
 
 #pageNav {
-  bottom: 0;
-  right: 0;
-  padding: 2rem 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  gap: 0.75rem;
+  align-items: start;
+  transform: rotate(90deg);
+  bottom: 48.5%;
+  right: 10%;
+}
+
+#pageNav a {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1000px) {
+  #pageNav {
+    right: 0%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #homeNav {
+    font-size: 2.5rem;
+    top: 3.1%;
+    left: 8%;
+  }
+
+  #pageNav {
+    transform: rotate(0deg);
+    font-size: 1rem;
+    top: 4%;
+    right: 8%;
+    align-items: end;
+    bottom: 48.5%;
+  }
 }
 
 .navAnim:before,
