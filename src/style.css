@@ -1,10 +1,15 @@
 :root {
+  --black: #151415;
+  --white: #E3DFDD;
+  --company-bg: #4E3D42;
+  --members-bg: #647CA6;
+  --idealogy-bg: #2F2D2E;
+
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   font-synthesis: none;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,13 +66,44 @@ section {
 }
 
 .textWhite {
-  color: #F2F0EF;
+  color: var(--white);
 }
 
 .gradientAnim {
   background: linear-gradient(-45deg, #ffffff, crimson, #4E3D42, #7389AE);
   background-size: 400% 400%;
   animation: backgroundAnim 10s ease infinite;
+}
+
+.noiseBg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation .2s infinite;
+  opacity: .9;
+  visibility: visible;
+  z-index: 50;
+  pointer-events: none;
+}
+
+@keyframes bg-animation {
+    0% { transform: translate(0,0) }
+    10% { transform: translate(-5%,-5%) }
+    20% { transform: translate(-10%,5%) }
+    30% { transform: translate(5%,-10%) }
+    40% { transform: translate(-5%,15%) }
+    50% { transform: translate(-10%,5%) }
+    60% { transform: translate(15%,0) }
+    70% { transform: translate(0,10%) }
+    80% { transform: translate(-15%,0) }
+    90% { transform: translate(10%,5%) }
+    100% { transform: translate(5%,0) }
 }
 
 @keyframes backgroundAnim {
