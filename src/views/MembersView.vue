@@ -6,7 +6,7 @@
 
 <style scoped>
 section {
-    background-color: crimson;
+    background-color: #7389AE;
     height: 150svh;
 }
 </style>

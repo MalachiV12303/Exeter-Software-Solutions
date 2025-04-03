@@ -5,7 +5,8 @@
 </template>
 
 <style scoped>
-section{
-    background-color: #087ea8;
+section {
+    background-color: #4E3D42;
+    /* background-color: rgba(78, 61, 66, 0.95); */
 }
 </style>

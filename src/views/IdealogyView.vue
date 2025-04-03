@@ -5,7 +5,7 @@
 </template>
 
 <style scoped>
-section{
-    background-color: #7120b3;
+section {
+    background-color: #2F2D2E;
 }
 </style>

@@ -1,43 +1,60 @@
 <template>
     <section>
-        <svg width='100%' height='100%' preserveAspectRatio='xMidYMid slice'>
-            <!-- <filter id='noiseFilter'>
-                <feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='8' stitchTiles='stitch' />
-            </filter> -->
-            <defs>
-                <mask id="textMask" x="0" y="0" width="100%" height="100%">
-                    <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
-                    <text class='cinzel' id='logo' text-anchor='middle' y='52%' x='50%' fill="black">EXETER</text>
-                    <text class='cinzel' id='logo' text-anchor='middle' y='52%' x='33%' fill="black">.</text>
-                </mask>
-            </defs>
-            <rect x="0" y="0" width="100%" height="100%" fill='#F2F0EF' mask="url(#textMask)" />
-            <text id='logoSub' text-anchor='middle' y='60%' x='50%' fill="black">software solutions</text>
-        </svg>
+        <div id='logoContainer' class="noSelect">
+            <p id='logo' class='cinzel'>.EXETER</p>
+            <p id='logoSub'>software solutions</p>
+        </div>
     </section>
 </template>
 
 <style scoped>
-text {
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+@property --＠color-1 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: crimson;
+}
+
+@property --＠color-2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #098ab9;
+}
+
+/* keyframes that change the color variable */
+@keyframes gradient-change {
+    to {
+        --＠color-1: #ff7070;
+        --＠color-2: #7120b3;
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F0EF;
+}
+
+#logoContainer {
+    animation: gradient-change 4s linear infinite alternate;
+    background: linear-gradient(to right in oklch,
+            /* use the variables in a gradient (or wherever!) */
+            var(--＠color-1),
+            var(--＠color-2));
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #logo {
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
     font-size: 10rem;
+    font-weight: 500;
 }
 
 #logoSub {
-    font-size: 2.5rem;
+    color: black;
+    font-size: 2vw;
     letter-spacing: 3px;
-}
-
-mask {
-    display: grid;
-    place-content: center;
 }
 </style>

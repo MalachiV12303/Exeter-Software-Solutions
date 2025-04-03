@@ -3,13 +3,17 @@ import { RouterView, RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <nav id='homeNav' >
-    <RouterLink to="/" class='cinzel' :class="{ 'white': $route.path !== '/'}">.EXETER</RouterLink>
+  <nav id='homeNav' class="noSelect">
+    <RouterLink to="/" class='cinzel' :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">
+      .EXETER</RouterLink>
   </nav>
-  <nav id='pageNav'>
-    <RouterLink to="/company" class='navAnim' active-class="activeNav">company</RouterLink>
-    <RouterLink to="/members" class='navAnim' active-class="activeNav">members</RouterLink>
-    <RouterLink to="/idealogy" class='navAnim' active-class="activeNav">idealogy</RouterLink>
+  <nav id='pageNav' class="noSelect">
+    <RouterLink to="/idealogy" class='navAnim' active-class="activeNav"
+      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">idealogy</RouterLink>
+    <RouterLink to="/company" class='navAnim' active-class="activeNav"
+      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">company</RouterLink>
+    <RouterLink to="/members" class='navAnim' active-class="activeNav"
+      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">members</RouterLink>
   </nav>
   <main>
     <RouterView v-slot="{ Component }">
@@ -31,10 +35,7 @@ a {
   color: black;
   font-size: 1.5rem;
   text-decoration: none;
-}
-
-.white{
-  color: #F2F0EF;
+  transition: color 1s linear;
 }
 
 nav {
@@ -44,16 +45,17 @@ nav {
 
 #homeNav {
   top: 0;
-  right: 0;
+  left: 0;
   padding: 2rem 4rem;
 }
 
 #pageNav {
-  transform: rotate(-90deg);
-  top: 42%;
-  left: 15%;
+  bottom: 0;
+  right: 0;
+  padding: 2rem 4rem;
   display: flex;
   flex-direction: column;
+  align-items: end;
 }
 
 .navAnim:before,
@@ -92,7 +94,8 @@ nav {
 }
 
 /* this keeps the effect present when on page */
-.activeNav:before, .activeNav:after{
+.activeNav:before,
+.activeNav:after {
   opacity: 1;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
