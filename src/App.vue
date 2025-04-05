@@ -24,6 +24,9 @@ import { RouterView, RouterLink } from 'vue-router';
       </Transition>
     </RouterView>
   </main>
+  <footer>
+    <a href='https://github.com/MalachiV12303' target="_blank" id="createdBy" :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">malachi valle</a>
+  </footer>
 </template>
 
 <style>
@@ -33,6 +36,16 @@ import { RouterView, RouterLink } from 'vue-router';
   width: 50%;
   height: 100%;
   z-index: 40;
+}
+
+#createdBy{
+  position: fixed;
+  transform: rotate(90deg);
+  transform-origin: top right;
+  bottom: 2%;
+  right: 2%;
+  letter-spacing: 3px;
+  font-size: 0.75rem;
 }
 
 main {
