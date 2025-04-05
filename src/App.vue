@@ -8,7 +8,7 @@ import { RouterView, RouterLink } from 'vue-router';
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">
       .EXETER</RouterLink>
   </nav>
-  <nav id='pageNav' class="noSelect">
+  <nav id='pageNav' class="noSelect sans">
     <RouterLink to="/idealogy" class='navAnim' active-class="activeNav"
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">idealogy</RouterLink>
     <RouterLink to="/company" class='navAnim' active-class="activeNav"
@@ -24,7 +24,7 @@ import { RouterView, RouterLink } from 'vue-router';
       </Transition>
     </RouterView>
   </main>
-  <footer>
+  <footer class="sans">
     <a href='https://github.com/MalachiV12303' target="_blank" id="createdBy" :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">malachi valle</a>
   </footer>
 </template>
@@ -38,11 +38,12 @@ import { RouterView, RouterLink } from 'vue-router';
   z-index: 40;
 }
 
+
 #createdBy{
   position: fixed;
   transform: rotate(90deg);
   transform-origin: top right;
-  bottom: 2%;
+  bottom: 4%;
   right: 2%;
   letter-spacing: 3px;
   font-size: 0.75rem;
@@ -69,7 +70,7 @@ nav {
 
 #homeNav {
   font-size: 2rem;
-  top: 2%;
+  top: 4%;
   left: 2%;
 }
 

@@ -2,7 +2,7 @@
     <section class="noSelect">
         <div id='logoContainer'>
             <p id='logo' class='cinzel'>.EXETER</p>
-        </div>
+            </div>
         <p id='logoSub'>software solutions</p>
     </section>
 </template>
@@ -26,7 +26,7 @@ section {
 }
 
 #logoContainer {
-    animation: gradient-change 2s linear infinite alternate;
+    animation: gradient-change 4s linear infinite alternate;
     background: linear-gradient(to right in oklch,
             /* use the variables in a gradient (or wherever!) */
             var(--＠color-1),
@@ -59,13 +59,13 @@ section {
 @property --＠color-2 {
     syntax: "<color>";
     inherits: false;
-    initial-value: #BBA53D;
+    initial-value: #009999;
 }
 
 /* keyframes that change the color variable */
 @keyframes gradient-change {
     to {
-        --＠color-1: #BBA53D;
+        --＠color-1: #009999;
         --＠color-2: #151415;
     }
 }

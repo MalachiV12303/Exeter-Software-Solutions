@@ -5,14 +5,19 @@
   --members-bg: #647CA6;
   --idealogy-bg: #2F2D2E;
 
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Cormorant Garamond", serif;
   font-weight: 400;
+
+  font-optical-sizing: auto;
   font-style: normal;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.sans{
+  font-family: "Montserrat", sans-serif;
 }
 
 * {
@@ -61,16 +66,14 @@ section {
   /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-.cinzel {
-  font-family: "Cinzel", serif;
-}
+
 
 .textWhite {
   color: var(--white);
 }
 
 .gradientAnim {
-  background: linear-gradient(-45deg, #ffffff, crimson, #4E3D42, #7389AE);
+  background: linear-gradient(-45deg, #ffffff, #009999, #4E3D42, #7389AE);
   background-size: 400% 400%;
   animation: backgroundAnim 10s ease infinite;
 }
