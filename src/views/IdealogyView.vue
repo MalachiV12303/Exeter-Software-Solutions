@@ -30,7 +30,7 @@ p {
     /* background-color: aqua; */
     height: 100%;
     color: var(--white);
-    line-height: 3rem;
+    line-height: 3.5rem;
     font-size: 2rem;
 }
 
