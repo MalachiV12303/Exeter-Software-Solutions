@@ -53,20 +53,20 @@ section {
 @property --＠color-1 {
     syntax: "<color>";
     inherits: false;
-    initial-value: crimson;
+    initial-value: #151415;
 }
 
 @property --＠color-2 {
     syntax: "<color>";
     inherits: false;
-    initial-value: #098ab9;
+    initial-value: #BBA53D;
 }
 
 /* keyframes that change the color variable */
 @keyframes gradient-change {
     to {
-        --＠color-1: #ff7070;
-        --＠color-2: #7120b3;
+        --＠color-1: #BBA53D;
+        --＠color-2: #151415;
     }
 }
 </style>
