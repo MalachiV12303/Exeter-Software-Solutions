@@ -77,6 +77,11 @@ nav {
 }
 
 @media screen and (max-width: 1000px) {
+  #homeNav {
+    top: 2%;
+    left: 4%;
+  }
+
   #pageNav {
     right: 0%;
   }

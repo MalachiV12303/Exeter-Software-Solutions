@@ -33,7 +33,7 @@ body {
 }
 
 section {
-  height: 100svh;
+  min-height: 100svh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
