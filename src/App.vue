@@ -95,7 +95,7 @@ nav {
 
   #pageNav {
     transform: rotate(0deg);
-    bottom: 30%;
+    bottom: 25%;
     right: 5%;
   }
 
