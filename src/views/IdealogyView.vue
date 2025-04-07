@@ -27,7 +27,7 @@
 <style scoped>
 section {
     background-color: var(--idealogy-bg);
-    padding: 120px 28vw 150px 180px;
+    padding: 120px 25% 150px 180px;
 }
 
 #textContainer {
@@ -52,22 +52,22 @@ p {
 @media screen and (max-width: 800px) {
     section {
         background-color: var(--idealogy-bg);
-        padding: 8rem 4rem 6rem;
+        padding: 8rem 4rem 4rem;
     }
 
     p {
         line-height: 2.5rem;
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 }
 
 @media screen and (min-width: 800px) and (max-width: 1000px) {
     section {
-        padding: 100px 28vw 120px 140px;
+        padding: 100px 20% 120px 140px;
     }
 
     p {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 }
 </style>

@@ -9,15 +9,14 @@ import { RouterView, RouterLink } from 'vue-router';
       .EXETER</RouterLink>
   </nav>
   <nav id='pageNav' class="noSelect sans">
-    <RouterLink to="/idealogy" class='navAnim' active-class="activeNav"
+    <RouterLink to="/idealogy" class='navItem' active-class="navActive"
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">idealogy</RouterLink>
-    <RouterLink to="/company" class='navAnim' active-class="activeNav"
+    <RouterLink to="/company" class='navItem' active-class="navActive"
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">company</RouterLink>
-    <RouterLink to="/members" class='navAnim' active-class="activeNav"
+    <RouterLink to="/members" class='navItem' active-class="navActive"
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">members</RouterLink>
   </nav>
   <main>
-    <!-- <div id='grid'></div> -->
     <RouterView v-slot="{ Component }">
       <Transition name='fade' mode="out-in">
         <component :is="Component" />
@@ -25,29 +24,19 @@ import { RouterView, RouterLink } from 'vue-router';
     </RouterView>
   </main>
   <footer class="sans">
-    <a href='https://github.com/MalachiV12303' target="_blank" id="createdBy" :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">malachi valle</a>
+    <a href='https://github.com/MalachiV12303' target="_blank" id="gitLink"
+      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">malachi valle</a>
   </footer>
 </template>
 
 <style>
-#grid {
-  position: fixed;
-  border: 1px solid var(--black);
-  width: 50%;
-  height: 100%;
-  z-index: 40;
-}
 
-
-#createdBy{
-  position: fixed;
-  transform: rotate(90deg);
-  transform-origin: top right;
-  bottom: 4%;
-  right: 2%;
-  letter-spacing: 3px;
-  font-size: 0.75rem;
-}
+/* --vertical-l: 2%;
+  --horizontal-l: 2%;
+  --vertical-m: 3%;
+  --horizontal-m: 3%;
+  --vertical-s: 2%;
+  --horizontal-s: 3%; */
 
 main {
   will-change: opacity;
@@ -68,58 +57,82 @@ nav {
   flex-direction: column;
 }
 
-#homeNav {
-  font-size: 2rem;
-  top: 4%;
-  left: 2%;
-}
-
 #pageNav {
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 3px;
-  font-size: 0.9rem;
-  gap: 0.75rem;
-  align-items: start;
   transform: rotate(90deg);
   bottom: 48.5%;
   right: 10%;
+  align-items: start;
+  gap: 0.75rem;
 }
 
-#pageNav a {
-  text-decoration: underline;
+#homeNav {
+  font-size: 2rem;
+  top: 2%;
+  left: 2%
 }
 
-@media screen and (max-width: 1000px) {
+#gitLink {
+  position: fixed;
+  transform: rotate(90deg);
+  transform-origin: top right;
+  bottom: 2%;
+  right: 2%;
+  letter-spacing: 3px;
+  font-size: 0.75rem;
+}
+
+
+@media screen and (min-width:800px) and (max-width: 1000px) {
   #homeNav {
-    top: 2%;
-    left: 4%;
+    top: 3%;
+    left: 3%;
   }
 
-  #pageNav {
-    right: 0%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  #homeNav {
-    font-size: 2.5rem;
-    top: 3.1%;
-    left: 8%;
+  #gitLink {
+    bottom: 3%;
+    right: 3%;
   }
 
   #pageNav {
     transform: rotate(0deg);
-    font-size: 1rem;
-    top: 4%;
-    right: 8%;
+    bottom: 30%;
+    right: 5%;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  #homeNav {
+    font-size: 2.25rem;
+    top: 2%;
+    left: 3%;
+  }
+
+  #gitLink {
+    bottom: 2%;
+    right: 3%;
+  }
+
+  #pageNav {
+    transform: rotate(0deg);
+    font-size: 0.75rem;
+    top: 2.7%;
+    right: 3%;
     align-items: end;
-    bottom: 48.5%;
   }
 }
 
-.navAnim:before,
-.navAnim:after {
+#pageNav a {
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Page Nav Animations*/
+.navItem:before,
+.navItem:after {
   display: inline-block;
   opacity: 0;
   -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
@@ -127,7 +140,7 @@ nav {
   transition: transform 0.3s, opacity 0.2s;
 }
 
-.navAnim:before {
+.navItem:before {
   margin-right: 10px;
   content: '[';
   -webkit-transform: translateX(20px);
@@ -135,7 +148,7 @@ nav {
   transform: translateX(20px);
 }
 
-.navAnim:after {
+.navItem:after {
   margin-left: 10px;
   content: ']';
   -webkit-transform: translateX(-20px);
@@ -143,10 +156,10 @@ nav {
   transform: translateX(-20px);
 }
 
-.navAnim:hover:before,
-.navAnim:hover:after,
-.navAnim:focus:before,
-.navAnim:focus:after {
+.navItem:hover:before,
+.navItem:hover:after,
+.navItem:focus:before,
+.navItem:focus:after {
   opacity: 1;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
@@ -154,14 +167,15 @@ nav {
 }
 
 /* this keeps the effect present when on page */
-.activeNav:before,
-.activeNav:after {
+.navActive:before,
+.navActive:after {
   opacity: 1;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
 }
 
+/* Page Transitions*/
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
