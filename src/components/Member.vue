@@ -33,7 +33,9 @@ var open = ref(false);
 #content {
     font-size: 1.5rem;
     letter-spacing: 2px;
-    will-change: height;
+    will-change: max-height;
+    overflow: hidden;
+
 }
 
 #container {
@@ -74,21 +76,20 @@ h1 {
 }
 
 /* Expanding Animation */
-.expand-enter-active,
-.expand-leave-active {
-    transition: height 0.6s cubic-bezier(.19,1,.22,1);;
-    /* transition: opacity 0.7s ease-in-out; */
-}
-
 .expand-enter-from,
 .expand-leave-to {
-    height: 0;
-    opacity: 0;
+    max-height: 0;
+    /* opacity: 0; */
 }
 
 .expand-enter-to,
 .expand-leave-from {
-    height: min-content;
-    opacity: 1;
+    max-height: 400px;
+    /* opacity: 1; */
+}
+
+.expand-enter-active,
+.expand-leave-active {
+    transition: all 0.6s cubic-bezier(.19,1,.22,1);;
 }
 </style>
