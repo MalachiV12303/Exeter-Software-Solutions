@@ -20,7 +20,6 @@
                     <p>Marlon Watson</p>
                     <p>Fern Lin</p>
                     <p>James Sunderland</p>
-                    <p>Vicki Graves</p>
                 </div>
                 <p class="noSelect">Address.</p>
                 <div>
