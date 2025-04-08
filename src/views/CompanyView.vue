@@ -1,15 +1,18 @@
 <template>
     <section>
         <div id='contentContainer'>
-            <div id='imageContainer'>
-                <!-- <img src="../assets/map.png"></img> -->
+            <div id="imageContainer">
+                <div id='image'>
+                    <!-- <img src="../assets/map.png"></img> -->
+                </div>
+                <p id='imageSub' class="noSelect sans">randomly selected map for demonstration</p>
             </div>
             <div id='textContainer' class="sans">
-                <p>Founded.</p>
+                <p class="noSelect">Founded.</p>
                 <div>
                     <p>June, 1951</p>
                 </div>
-                <p>Officials.</p>
+                <p class="noSelect">Officials.</p>
                 <div>
                     <p>Oscar Thatcher (CEO)</p>
                     <p>Kara Snow (CDO)</p>
@@ -19,7 +22,7 @@
                     <p>James Sunderland</p>
                     <p>Vicki Graves</p>
                 </div>
-                <p>Address.</p>
+                <p class="noSelect">Address.</p>
                 <div>
                     <p>825 Central</p>
                     <p>Silent Hill, M.E.</p>
@@ -32,7 +35,7 @@
 <style scoped>
 section {
     background-color: var(--company-bg);
-    padding: 60px 140px;
+    padding: 60px 180px;
 }
 
 p {
@@ -45,19 +48,31 @@ p {
     margin-bottom: auto;
     display: flex;
     flex-direction: row;
-    gap: 4rem;
+    gap: 8rem;
     align-items: end;
     justify-content: center;
 }
 
-#imageContainer {
+#imageContainer{
+    width: 900px;
+    height: 550px;
+}
+
+#image {
     background-image: url('../assets/map.png');
     background-size: cover;
     background-position: center;
-    width: 900px;
-    height: 550px;
+    width: 100%;
+    height: 100%;
     position: relative;
     flex-grow: 1;
+}
+
+#imageSub {
+    color: var(--white);
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    padding: 0.75rem 0.5rem;
 }
 
 #textContainer {
@@ -71,11 +86,11 @@ p {
     column-gap: 1.5rem;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1400px) {
     #contentContainer {
         flex-direction: column;
         align-items: start;
-        gap: 2rem;
+        gap: 4rem;
     }
 }
 
@@ -90,12 +105,13 @@ p {
     }
 }
 
-@media screen and (min-width: 800px) and (max-width: 1000px) {
+@media screen and (min-width: 800px) and (max-width: 1400px) {
     section {
         padding: 60px 120px;
     }
 
     #imageContainer {
+        max-width: 700px;
         width: 100%;
         height: 350px;
     }
