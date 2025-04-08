@@ -90,6 +90,6 @@ h1 {
 
 .expand-enter-active,
 .expand-leave-active {
-    transition: all 0.6s cubic-bezier(.19,1,.22,1);;
+    transition: all 0.8s cubic-bezier(.19,1,.22,1);;
 }
 </style>
