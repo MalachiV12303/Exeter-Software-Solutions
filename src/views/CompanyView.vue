@@ -10,7 +10,7 @@
             <div id='textContainer' class="sans">
                 <p class="noSelect">Founded.</p>
                 <div>
-                    <p>June, 1951</p>
+                    <p>June, 2010</p>
                 </div>
                 <p class="noSelect">Officials.</p>
                 <div>
@@ -52,7 +52,7 @@ p {
     justify-content: center;
 }
 
-#imageContainer{
+#imageContainer {
     width: 900px;
     height: 550px;
 }
