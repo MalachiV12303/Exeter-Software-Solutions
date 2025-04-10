@@ -28,7 +28,6 @@ section {
 #logoContainer {
     animation: gradient-change 4s linear infinite alternate;
     background: linear-gradient(to right in oklch,
-            /* use the variables in a gradient (or wherever!) */
             var(--＠color-1),
             var(--＠color-2));
     background-clip: text;
