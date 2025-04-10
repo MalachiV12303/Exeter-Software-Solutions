@@ -38,7 +38,7 @@ body {
 }
 
 section {
-  min-height: 100svh;
+  min-height: 100dvh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
