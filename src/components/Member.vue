@@ -14,32 +14,48 @@ function getImageUrl() {
 }
 
 var open = ref(false);
+
 </script>
 
 <template>
     <div id="container">
         <div id="nameContainer">
             <h1 id="jobTitle">{{ title }}</h1>
-            <button @click="open = !open">
+            <button @click="open = !open" style="white-space: nowrap;">
                 {{ name }}
             </button>
         </div>
         <Transition name='expand'>
             <div v-show="open" id='contentContainer'>
+                <div id="contentImage">
+                    <div id="image">
+                        <img :src="getImageUrl()" />
+                    </div>
+                    <p>{{ contentText[0] }}</p>
+                </div>
                 <div id="contentText">
-                    <p v-for="(item, index) in contentText" :key="index">
+                    <p v-for="(item, index) in contentText.slice(1)" :key="index">
                         {{ item }}
                     </p>
-                </div>
-                <div id="contentImage">
-                    <img :src="getImageUrl()" />
                 </div>
             </div>
         </Transition>
     </div>
 </template>
-
 <style scoped>
+button {
+    background-color: transparent;
+    color: var(--black);
+    border: none;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3.5rem;
+    transition: color 0.3s ease-out;
+}
+
+button:hover {
+    color: var(--white);
+}
+
 #container {
     display: flex;
     flex-direction: column;
@@ -56,28 +72,14 @@ var open = ref(false);
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-}
-
-#contentText {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
     line-height: 1.5;
     font-size: 1.25rem;
     letter-spacing: 1px;
 }
 
 #contentImage {
-    margin-left: 4rem;
-    width: 40%;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
+    display: flex;
+    align-items: center;
 }
 
 #jobTitle {
@@ -88,23 +90,94 @@ img {
     font-weight: 400;
     letter-spacing: 2px;
     padding-right: 3rem;
+    white-space: nowrap;
 }
 
-button {
-    background-color: transparent;
-    color: var(--black);
-    border: none;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 3.5rem;
-    transition: color 0.3s ease-out;
+#contentText {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-button:hover {
-    color: var(--white);
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    min-width: 30%;
+    margin: 2rem;
+}
+
+#image::before {
+    content: '';
+    position: absolute;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--black);
+    transform-origin: center;
+    bottom: 10px;
+    left: -20px;
+    transform: rotate(45deg);
+    width: 60px;
+    height: 1px;
+}
+
+#image::after {
+    content: '';
+    position: absolute;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--black);
+    transform-origin: center;
+    top: 10px;
+    right: -20px;
+    transform: rotate(45deg);
+    width: 60px;
+    height: 1px;
 }
 
 #container:not(:first-child) button {
     margin-top: 2rem;
+}
+
+@media screen and (max-width: 1400px) {
+    button {
+        font-size: 3rem;
+    }
+
+    #contentImage {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 2rem;
+    }
+
+    #jobTitle {
+        position: absolute;
+        bottom: 5px;
+        transform: translateX(0);
+        transform: translateY(100%);
+        padding-right: 0;
+        margin-top: 1rem;
+    }
+
+    #image {
+        width: 40%;
+        min-width: 40%;
+        margin: 2rem;
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #image {
+        width: 60%;
+        min-width: 60%;
+    }
 }
 
 /* Expanding Animation */
