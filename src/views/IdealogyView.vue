@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div id='textContainer' class="noSelect cormo">
+        <div id='textContainer' class="noSelect">
             <div class="lineContainer">
                 <p>Centered around the belief that technology should empower businesses, inspire innovation, and create
                     lasting value.</p>
@@ -27,7 +27,7 @@
 <style scoped>
 section {
     background-color: var(--idealogy-bg);
-    padding: 120px 25% 150px 180px;
+    padding: 120px 28% 150px 180px;
 }
 
 #textContainer {
