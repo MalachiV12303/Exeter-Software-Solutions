@@ -1,33 +1,35 @@
 <template>
     <section>
-        <div id='contentContainer'>
-            <div id="imageContainer">
-                <div id='image'>
-                    <!-- <img src="../assets/map.png"></img> -->
+        <Transition name='contentAppear' appear>
+            <div id='contentContainer'>
+                <div id="imageContainer">
+                    <div id='image'>
+                        <!-- <img src="../assets/map.png"></img> -->
+                    </div>
+                    <p id='imageSub' class="noSelect sans">randomly selected map for demonstration</p>
                 </div>
-                <p id='imageSub' class="noSelect sans">randomly selected map for demonstration</p>
+                <div id='textContainer' class="sans noSelect">
+                    <p>Founded.</p>
+                    <div>
+                        <p>June, 2010</p>
+                    </div>
+                    <p>Officials.</p>
+                    <div>
+                        <p>Oscar Thatcher (CEO)</p>
+                        <p>Kara Snow (CDO)</p>
+                        <p>Jax Fuller (COO)</p>
+                        <p>Fern Lin</p>
+                        <p>Marlon Watson</p>
+                        <p>James Sunderland</p>
+                    </div>
+                    <p class="noSelect">Address.</p>
+                    <div>
+                        <p>825 Central</p>
+                        <p>Silent Hill, M.E.</p>
+                    </div>
+                </div>
             </div>
-            <div id='textContainer' class="sans">
-                <p class="noSelect">Founded.</p>
-                <div>
-                    <p>June, 2010</p>
-                </div>
-                <p class="noSelect">Officials.</p>
-                <div>
-                    <p>Oscar Thatcher (CEO)</p>
-                    <p>Kara Snow (CDO)</p>
-                    <p>Jax Fuller (COO)</p>
-                    <p>Marlon Watson</p>
-                    <p>Fern Lin</p>
-                    <p>James Sunderland</p>
-                </div>
-                <p class="noSelect">Address.</p>
-                <div>
-                    <p>825 Central</p>
-                    <p>Silent Hill, M.E.</p>
-                </div>
-            </div>
-        </div>
+        </Transition>
     </section>
 </template>
 

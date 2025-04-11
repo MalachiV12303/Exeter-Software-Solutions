@@ -2,7 +2,7 @@
     <section class="noSelect">
         <div id='logoContainer'>
             <p id='logo' class='cinzel'>.EXETER</p>
-            </div>
+        </div>
         <p id='logoSub'>software solutions</p>
     </section>
 </template>

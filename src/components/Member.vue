@@ -18,30 +18,33 @@ var open = ref(false);
 </script>
 
 <template>
-    <div id="container">
-        <div id="nameContainer">
-            <h1 id="jobTitle">{{ title }}</h1>
-            <button @click="open = !open" style="white-space: nowrap;">
-                {{ name }}
-            </button>
-        </div>
-        <Transition name='expand'>
-            <div v-show="open" id='contentContainer'>
-                <div id="contentImage">
-                    <div id="image">
-                        <img :src="getImageUrl()" />
-                    </div>
-                    <p>{{ contentText[0] }}</p>
-                </div>
-                <div id="contentText">
-                    <p v-for="(item, index) in contentText.slice(1)" :key="index">
-                        {{ item }}
-                    </p>
-                </div>
+    <Transition name='contentAppear' appear>
+        <div id="container">
+            <div id="nameContainer">
+                <h1 id="jobTitle">{{ title }}</h1>
+                <button @click="open = !open" style="white-space: nowrap;">
+                    {{ name }}
+                </button>
             </div>
-        </Transition>
-    </div>
+            <Transition name='expand'>
+                <div v-show="open" id='contentContainer'>
+                    <div id="contentImage">
+                        <div id="image">
+                            <img :src="getImageUrl()" />
+                        </div>
+                        <p>{{ contentText[0] }}</p>
+                    </div>
+                    <div id="contentText">
+                        <p v-for="(item, index) in contentText.slice(1)" :key="index">
+                            {{ item }}
+                        </p>
+                    </div>
+                </div>
+            </Transition>
+        </div>
+    </Transition>
 </template>
+
 <style scoped>
 button {
     background-color: transparent;
@@ -177,6 +180,7 @@ img {
     button {
         font-size: 2.25rem;
     }
+
     #image {
         width: 60%;
         min-width: 60%;
