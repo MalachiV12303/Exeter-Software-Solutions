@@ -174,6 +174,9 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+    button {
+        font-size: 2.25rem;
+    }
     #image {
         width: 60%;
         min-width: 60%;
