@@ -123,7 +123,6 @@ nav {
 }
 
 #pageNav a {
-  text-decoration: underline;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.9rem;

@@ -27,7 +27,7 @@ var open = ref(false);
                 </button>
             </div>
             <Transition name='expand'>
-                <div v-show="open" id='contentContainer'>
+                <div v-show="open" id='contentContainer' class="sans">
                     <div id="contentImage">
                         <div id="image">
                             <img :src="getImageUrl()" />
@@ -70,6 +70,7 @@ button:hover {
 }
 
 #contentContainer {
+
     will-change: max-height;
     overflow: hidden;
     position: relative;
@@ -105,7 +106,6 @@ button:hover {
 img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
 }
 
 #image {
