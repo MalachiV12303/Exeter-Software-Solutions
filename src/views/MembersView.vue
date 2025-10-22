@@ -25,8 +25,8 @@ var james = [`James Sunderland is a seasoned Member of the Board at Exeter, brin
 <style scoped>
 section {
     background-color: var(--members-bg);
-    justify-content: center;
-    padding: 140px 0px 100px 180px;
+    justify-content: start;
+    padding: 200px 0px 100px 180px;
 }
 
 #memberList {

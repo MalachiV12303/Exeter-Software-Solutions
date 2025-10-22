@@ -70,7 +70,6 @@ button:hover {
 }
 
 #contentContainer {
-
     will-change: max-height;
     overflow: hidden;
     position: relative;
@@ -78,7 +77,6 @@ button:hover {
     flex-direction: column;
     line-height: 1.5;
     font-size: 1.25rem;
-    letter-spacing: 1px;
 }
 
 #contentImage {

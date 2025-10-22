@@ -1,9 +1,11 @@
 <template>
     <section class="noSelect">
-        <div id='logoContainer'>
-            <p id='logo' class='cinzel'>.EXETER</p>
-        </div>
-        <p id='logoSub'>software solutions</p>
+        <h1>
+            <span id='logoContainer'>
+                <p id='logo' class='cinzel'>.EXETER</p>
+            </span>
+            <p id='logoSub'>software solutions</p>
+        </h1>
     </section>
 </template>
 
@@ -23,6 +25,8 @@ section {
     letter-spacing: 3px;
     margin-left: 10px;
     color: var(--black);
+    font-weight: 400;
+    text-align: center;
 }
 
 #logoContainer {
@@ -52,20 +56,20 @@ section {
 @property --＠color-1 {
     syntax: "<color>";
     inherits: false;
-    initial-value: #151415;
+    initial-value: #a12727;
 }
 
 @property --＠color-2 {
     syntax: "<color>";
     inherits: false;
-    initial-value: #009999;
+    initial-value: #000399;
 }
 
 /* keyframes that change the color variable */
 @keyframes gradient-change {
     to {
-        --＠color-1: #009999;
-        --＠color-2: #151415;
+        --＠color-1: #000399;
+        --＠color-2: #a12727;
     }
 }
 </style>

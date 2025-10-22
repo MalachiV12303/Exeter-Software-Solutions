@@ -1,5 +1,6 @@
 <script setup>
 import { RouterView, RouterLink } from 'vue-router';
+import CustomCursor from "./components/CustomCursor.vue";
 </script>
 
 <template>
@@ -22,6 +23,7 @@ import { RouterView, RouterLink } from 'vue-router';
         <component :is="Component" />
       </Transition>
     </RouterView>
+    <CustomCursor />
   </main>
   <footer class="sans">
     <a href='https://github.com/MalachiV12303' target="_blank" id="gitLink"
@@ -37,6 +39,12 @@ import { RouterView, RouterLink } from 'vue-router';
   --horizontal-m: 3%;
   --vertical-s: 2%;
   --horizontal-s: 3%; */
+
+body.custom-cursor-enabled, 
+body.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
 
 main {
   will-change: opacity;
