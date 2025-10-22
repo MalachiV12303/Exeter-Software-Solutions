@@ -75,8 +75,8 @@ button:hover {
     position: relative;
     display: flex;
     flex-direction: column;
-    line-height: 1.5;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
 }
 
 #contentImage {
