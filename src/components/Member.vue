@@ -52,7 +52,7 @@ var isOpen = ref(false);
 }
 
 .name-container h1 {
-    color: var(--white);
+    color: #3e4857;
     font-weight: 400;
     letter-spacing: 2px;
     position: absolute;
@@ -64,11 +64,13 @@ var isOpen = ref(false);
 }
 
 .content-container {
+    color: var(--black);
     will-change: max-height;
     overflow: hidden;
     position: relative;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 2;
+    text-transform: uppercase;
 }
 
 .content-container p {
@@ -109,19 +111,16 @@ button:hover {
 }
 
 /* White blurred offset background */
-.image-wrapper::before {
+/* .image-wrapper::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* match image bounds exactly */
     background-color: white;
     top: 5px;
-    /* offset down */
     left: -5px;
-    /* offset left */
     filter: blur(1px);
     z-index: 0;
-}
+} */
 
 /* Actual member image */
 .image-wrapper img {
@@ -154,7 +153,7 @@ button:hover {
     }
 
     .image-container {
-        padding: 4rem;
+        padding: 2rem 8rem;
         /* allows background to extend */
     }
 }

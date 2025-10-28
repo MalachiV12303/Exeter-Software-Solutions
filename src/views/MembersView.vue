@@ -17,7 +17,7 @@ const james = { name: "James Sunderland", imgSrc: "james.jpg", title: "Member of
 
 <template>
     <section>
-        <div id="memberList" class="noSelect">
+        <div id="memberList" class="">
             <Member :name="oscar.name" :title="oscar.title" :imageName="oscar.imgSrc"
                 :contentText="oscar.description" />
             <Member :name="kara.name" :title="kara.title" :imageName="kara.imgSrc" :contentText="kara.description" />

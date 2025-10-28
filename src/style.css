@@ -2,7 +2,7 @@
   --black: #151415;
   --white: #f3f3f3;
   --company-bg: #4E3D42;
-  --members-bg: #647CA6;
+  --members-bg: #7c95bd;
   --idealogy-bg: #2F2D2E;
 
   font-family: "Cormorant Garamond", serif;
@@ -14,6 +14,24 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* For WebKit browsers (Chrome, Safari, etc.) */
+::-webkit-selection {
+  background-color: var(--white); /* Yellow background */
+  color: #000000; /* Black text */
+}
+
+/* For Firefox */
+::-moz-selection {
+  background-color: var(--white);
+  color: #000000;
+}
+
+/* Standard selection for all browsers */
+::selection {
+  background-color: var(--white);
+  color: #000000;
 }
 
 * {

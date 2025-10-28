@@ -8,7 +8,7 @@
                     </div>
                     <p id='imageSub' class="noSelect mono">randomly selected map for demonstration</p>
                 </div>
-                <div id='textContainer' class="mono noSelect">
+                <div id='textContainer' class="mono">
                     <p>Founded.</p>
                     <div>
                         <p>June, 2010</p>
@@ -67,6 +67,7 @@ p {
     height: 100%;
     position: relative;
     flex-grow: 1;
+    border-radius: 10px;
 }
 
 #imageSub {
