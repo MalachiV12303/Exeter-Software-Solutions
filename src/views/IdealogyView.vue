@@ -1,7 +1,7 @@
 <template>
     <section>
         <Transition name='contentAppear' appear>
-            <div id='textContainer' class="noSelect">
+            <div id='textContainer' class="">
                 <div class="lineContainer">
                     <p>Centered around the belief that technology should empower businesses, inspire innovation, and
                         create

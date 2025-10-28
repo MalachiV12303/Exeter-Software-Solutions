@@ -26,8 +26,8 @@ import CustomCursor from "./components/CustomCursor.vue";
     <CustomCursor />
   </main>
   <footer class="mono">
-    <a href='https://github.com/MalachiV12303' target="_blank" id="gitLink"
-      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">malachi valle</a>
+    <a href='https://www.malachidev.com/' target="_blank" id="portfolioLink"
+      :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">: website by malachi valle</a>
   </footer>
 </template>
 
@@ -70,15 +70,14 @@ nav {
 
 #homeNav {
   font-size: 2rem;
-  top: 2%;
+  top: 3%;
   left: 2%
 }
 
-#gitLink {
+#portfolioLink {
   position: fixed;
-  transform: rotate(90deg);
   transform-origin: top right;
-  bottom: 2%;
+  bottom: 3%;
   right: 2%;
   letter-spacing: 3px;
   font-size: 0.75rem;
