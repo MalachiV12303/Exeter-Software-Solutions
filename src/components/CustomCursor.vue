@@ -5,7 +5,15 @@
     class="custom-cursor"
     aria-hidden="true"
   >
-    <div ref="ring" class="cursor-ring" :class="{ 'cursor-ring-white': $route.path === '/company' || $route.path === '/idealogy' }"></div>
+    <!-- Outer ring: retains route-based white variant and hover state -->
+    <div
+      ref="ring"
+      class="cursor-ring"
+      :class="{
+        'cursor-ring-white': $route.path === '/company' || $route.path === '/idealogy',
+        'cursor-hover': isHovering
+      }"
+    ></div>
   </div>
 </template>
 
@@ -38,10 +46,29 @@ const ringSize = 38;
 // Click state
 let isPressed = false;
 
+// reactive hover flag used by template class binding
+const isHovering = ref(false);
+
+/**
+ * Determine if an element (or its ancestor) should be treated as "interactive"
+ * You can add more selectors here or set `data-cursor-interactive` on elements you want to opt-in.
+ */
+function isElementInteractive(el) {
+  if (!el) return false;
+  // common interactive selectors + explicit data attribute
+  const selector =
+    "a, button, input[type='button'], input[type='submit'], input[type='reset'], textarea, select, [role='button'], [data-cursor-interactive]";
+  return !!el.closest(selector);
+}
+
 function onMove(e) {
   const evt = e.touches ? e.touches[0] : e;
   targetX = evt.clientX;
   targetY = evt.clientY;
+
+  // inspect element below the pointer and update hover state
+  const node = document.elementFromPoint(targetX, targetY);
+  isHovering.value = isElementInteractive(node);
 }
 
 function onEnter() {
@@ -50,6 +77,7 @@ function onEnter() {
 
 function onLeave() {
   if (cursor.value) cursor.value.style.opacity = "0";
+  isHovering.value = false;
 }
 
 function onMouseDown() {
@@ -85,7 +113,7 @@ function update() {
     ring.value.style.transform = `translate3d(${currX - ringSize / 2}px, ${currY - ringSize / 2}px, 0) rotate(${angle}deg) scale(${scale})`;
   }
 
-  // always keep the loop running for press responsiveness
+  // keep the loop running for responsiveness (shrinking will respond even when stationary)
   rafId = requestAnimationFrame(update);
 }
 
@@ -139,17 +167,26 @@ onBeforeUnmount(() => {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.85);
   background: rgba(255, 255, 255, 0.03);
   transform-origin: center center;
   will-change: transform;
   box-sizing: border-box;
-  transition: all 0.15s ease-out; /* smooth press animation */
+  transition: all 0.15s ease-out; /* smooth press/hover animation */
 }
 
+/* white version for certain routes (keeps your existing logic) */
 .cursor-ring-white {
   border: 2px solid rgba(240, 240, 240, 0.85);
   background: rgba(240, 240, 240, 0.03);
+}
+
+/* hover state when above an interactive element */
+.cursor-hover {
+  /* change fill and border when hovering interactive elements */
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.95);
+  transform: scale(1.15); /* subtle grow on hover */
 }
 
 /* hide native cursor */

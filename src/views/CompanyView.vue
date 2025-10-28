@@ -6,9 +6,9 @@
                     <div id='image'>
                         <!-- <img src="../assets/map.png"></img> -->
                     </div>
-                    <p id='imageSub' class="noSelect sans">randomly selected map for demonstration</p>
+                    <p id='imageSub' class="noSelect mono">randomly selected map for demonstration</p>
                 </div>
-                <div id='textContainer' class="sans noSelect">
+                <div id='textContainer' class="mono noSelect">
                     <p>Founded.</p>
                     <div>
                         <p>June, 2010</p>

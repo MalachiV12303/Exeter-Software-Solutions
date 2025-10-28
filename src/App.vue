@@ -9,7 +9,7 @@ import CustomCursor from "./components/CustomCursor.vue";
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">
       .EXETER</RouterLink>
   </nav>
-  <nav id='pageNav' class="noSelect sans">
+  <nav id='pageNav' class="noSelect mono">
     <RouterLink to="/idealogy" class='navItem' active-class="navActive"
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">idealogy</RouterLink>
     <RouterLink to="/company" class='navItem' active-class="navActive"
@@ -25,26 +25,21 @@ import CustomCursor from "./components/CustomCursor.vue";
     </RouterView>
     <CustomCursor />
   </main>
-  <footer class="sans">
+  <footer class="mono">
     <a href='https://github.com/MalachiV12303' target="_blank" id="gitLink"
       :class="{ 'textWhite': $route.path === '/company' || $route.path === '/idealogy' }">malachi valle</a>
   </footer>
 </template>
 
 <style>
-
-/* --vertical-l: 2%;
-  --horizontal-l: 2%;
-  --vertical-m: 3%;
-  --horizontal-m: 3%;
-  --vertical-s: 2%;
-  --horizontal-s: 3%; */
-
 body.custom-cursor-enabled, 
 body.custom-cursor-enabled * {
   cursor: none !important;
 }
 
+.mono {
+  font-family: "Montserrat", sans-serif;
+}
 
 main {
   will-change: opacity;
@@ -90,7 +85,7 @@ nav {
 }
 
 
-@media screen and (min-width:800px) and (max-width: 1000px) {
+@media screen and (min-width:800px) and (max-width: 800px) {
   #homeNav {
     top: 3%;
     left: 3%;
