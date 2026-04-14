@@ -83,7 +83,7 @@ button {
     color: var(--black);
     border: none;
     font-family: "Cormorant Garamond", serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     transition: color 0.3s ease-out;
     grid-column: span 2 / span 2;
     text-align: start;
