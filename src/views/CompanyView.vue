@@ -1,14 +1,13 @@
 <template>
-    <section>
-        <Transition name='contentAppear' appear>
-            <div id='contentContainer'>
-                <div id="imageContainer">
-                    <div id='image'>
-                        <!-- <img src="../assets/map.png"></img> -->
-                    </div>
-                    <p id='imageSub' class="noSelect mono">randomly selected map for demonstration</p>
+    <section class="section">
+        <Transition name="contentAppear" appear>
+            <div class="content">
+                <div class="map">
+                    <GMapMap :center="{ lat: 61.2478, lng: -145.3204 }" :zoom="12" class="mapInner">
+                        <GMapMarker :position="{ lat: 61.2478, lng: -145.3204 }" />
+                    </GMapMap>
                 </div>
-                <div id='textContainer' class="mono">
+                <div class="text mono">
                     <p>Founded.</p>
                     <div>
                         <p>June, 2010</p>
@@ -34,7 +33,7 @@
 </template>
 
 <style scoped>
-section {
+.section {
     background-color: var(--company-bg);
     padding: 60px 180px;
 }
@@ -43,79 +42,71 @@ p {
     white-space: nowrap;
 }
 
-#contentContainer {
-    width: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
+.content {
     display: flex;
-    flex-direction: row;
+    width: 100%;
     gap: 8rem;
-    align-items: end;
+    align-items: flex-end;
     justify-content: center;
 }
 
-#imageContainer {
-    width: 900px;
-    height: 550px;
+.map {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    flex-direction: column;
 }
 
-#image {
-    background-image: url('../assets/map.png');
-    background-size: cover;
-    background-position: center;
+.mapInner {
     width: 100%;
     height: 100%;
-    position: relative;
-    flex-grow: 1;
     border-radius: 10px;
+    overflow: hidden;
 }
 
-#imageSub {
+.sub {
     color: var(--white);
     letter-spacing: 2px;
     font-size: 0.75rem;
     padding: 0.75rem 0.5rem;
 }
 
-#textContainer {
+.text {
     color: var(--white);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    row-gap: 1rem;
-    column-gap: 1.5rem;
+    gap: 1rem 1.5rem;
 }
 
 @media screen and (max-width: 1400px) {
-    #contentContainer {
+    .content {
         flex-direction: column;
-        align-items: start;
+        align-items: flex-start;
         gap: 4rem;
     }
 }
 
 @media screen and (max-width: 800px) {
-    section {
+    .section {
         padding: 120px 35px;
     }
 
-    #imageContainer {
-        width: 100%;
-        height: 300px;
+    .map {
+        aspect-ratio: 16 / 9;
     }
 }
 
 @media screen and (min-width: 800px) and (max-width: 1400px) {
-    section {
+    .section {
         padding: 60px 120px;
     }
 
-    #imageContainer {
+    .map {
         max-width: 700px;
-        width: 100%;
-        height: 350px;
     }
 }
 </style>

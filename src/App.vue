@@ -1,6 +1,159 @@
 <script setup>
-import { RouterView, RouterLink } from 'vue-router';
-import CustomCursor from "./components/CustomCursor.vue";
+import { RouterView, RouterLink, useRouter, useRoute } from 'vue-router'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
+import CustomCursor from "./components/CustomCursor.vue"
+
+const router = useRouter()
+const route = useRoute()
+
+const routes = ['/', '/idealogy', '/company', '/members']
+
+const isNavigating = ref(false)
+const delay = 1100
+
+const isOverMap = ref(false)
+
+const touchStartY = ref(0)
+const touchEndY = ref(0)
+
+const scrollAttempts = { up: 0, down: 0 }
+
+const resetScrollState = () => {
+  scrollAttempts.up = 0
+  scrollAttempts.down = 0
+}
+
+watch(() => route.path, () => {
+  resetScrollState()
+})
+
+const navigate = (direction) => {
+  if (isNavigating.value) return
+
+  const currentIndex = routes.indexOf(route.path)
+  if (currentIndex === -1) return
+
+  let nextIndex = currentIndex
+
+  if (direction === 'down') nextIndex++
+  if (direction === 'up') nextIndex--
+
+  if (nextIndex < 0) nextIndex = routes.length - 1
+  if (nextIndex >= routes.length) nextIndex = 0
+
+  isNavigating.value = true
+  router.push(routes[nextIndex])
+
+  setTimeout(() => {
+    isNavigating.value = false
+  }, delay)
+}
+
+const getBounds = () => {
+  const scrollTop = window.scrollY
+  const pageHeight = document.documentElement.scrollHeight
+  const viewport = window.innerHeight
+
+  const distanceFromBottom = pageHeight - (scrollTop + viewport)
+
+  return {
+    atTop: scrollTop <= 80,
+    atBottom: distanceFromBottom <= 80
+  }
+}
+
+const handleScroll = (e) => {
+  if (window.innerWidth < 800) return
+  if (isOverMap.value) return
+  if (isNavigating.value) return
+  if (Math.abs(e.deltaY) < 10) return
+
+  const { atTop, atBottom } = getBounds()
+
+  if (e.deltaY > 0) {
+    if (!atBottom) return
+
+    scrollAttempts.down++
+    if (scrollAttempts.down < 3) return
+
+    scrollAttempts.down = 0
+    navigate('down')
+  } else {
+    if (!atTop) return
+
+    scrollAttempts.up++
+    if (scrollAttempts.up < 3) return
+
+    scrollAttempts.up = 0
+    navigate('up')
+  }
+}
+
+const handleMouseOver = (e) => {
+  if (e.target.closest('.map')) {
+    isOverMap.value = true
+  }
+}
+
+const handleMouseOut = (e) => {
+  if (e.target.closest('.map')) {
+    isOverMap.value = false
+  }
+}
+
+const handleTouchStart = (e) => {
+  touchStartY.value = e.touches[0].clientY
+}
+
+const handleTouchMove = (e) => {
+  touchEndY.value = e.touches[0].clientY
+}
+
+const handleTouchEnd = () => {
+  const diff = touchStartY.value - touchEndY.value
+
+  if (Math.abs(diff) < 50) return
+  if (isNavigating.value) return
+  if (isOverMap.value) return
+
+  const { atTop, atBottom } = getBounds()
+
+  if (diff > 0) {
+    if (!atBottom) return
+  } else {
+    if (!atTop) return
+  }
+
+  navigate(diff > 0 ? 'down' : 'up')
+}
+
+let resizeObserver
+
+onMounted(() => {
+  window.addEventListener('wheel', handleScroll, { passive: true })
+  window.addEventListener('mouseover', handleMouseOver)
+  window.addEventListener('mouseout', handleMouseOut)
+  window.addEventListener('touchstart', handleTouchStart, { passive: true })
+  window.addEventListener('touchmove', handleTouchMove, { passive: true })
+  window.addEventListener('touchend', handleTouchEnd)
+
+  resizeObserver = new ResizeObserver(() => {
+    resetScrollState()
+  })
+
+  resizeObserver.observe(document.body)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('wheel', handleScroll)
+  window.removeEventListener('mouseover', handleMouseOver)
+  window.removeEventListener('mouseout', handleMouseOut)
+  window.removeEventListener('touchstart', handleTouchStart)
+  window.removeEventListener('touchmove', handleTouchMove)
+  window.removeEventListener('touchend', handleTouchEnd)
+
+  if (resizeObserver) resizeObserver.disconnect()
+})
 </script>
 
 <template>
@@ -83,7 +236,6 @@ nav {
   font-size: 0.75rem;
 }
 
-
 @media screen and (min-width:800px) and (max-width: 800px) {
   #homeNav {
     top: 3%;
@@ -100,7 +252,6 @@ nav {
     bottom: 25%;
     right: 5%;
   }
-
 }
 
 @media screen and (max-width: 800px) {
@@ -131,29 +282,22 @@ nav {
   font-weight: 600;
 }
 
-/* Page Nav Animations*/
 .navItem:before,
 .navItem:after {
   display: inline-block;
   opacity: 0;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
   transition: transform 0.3s, opacity 0.2s;
 }
 
 .navItem:before {
   margin-right: 10px;
   content: '[';
-  -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
   transform: translateX(20px);
 }
 
 .navItem:after {
   margin-left: 10px;
   content: ']';
-  -webkit-transform: translateX(-20px);
-  -moz-transform: translateX(-20px);
   transform: translateX(-20px);
 }
 
@@ -162,21 +306,15 @@ nav {
 .navItem:focus:before,
 .navItem:focus:after {
   opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
   transform: translateX(0px);
 }
 
-/* this keeps the effect present when on page */
 .navActive:before,
 .navActive:after {
   opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
   transform: translateX(0px);
 }
 
-/* Page Transitions*/
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
