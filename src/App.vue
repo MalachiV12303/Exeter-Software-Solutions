@@ -116,7 +116,7 @@ const handleTouchEnd = () => {
   const duration = Date.now() - touchStartTime.value
 
   if (duration < 150) return
-  if (Math.abs(diff) < 70) return
+  if (Math.abs(diff) < 50) return
   if (isNavigating.value) return
   if (isOverMap.value) return
 
