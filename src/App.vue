@@ -15,6 +15,7 @@ const isOverMap = ref(false)
 
 const touchStartY = ref(0)
 const touchEndY = ref(0)
+const touchStartTime = ref(0)
 
 const scrollAttempts = { up: 0, down: 0 }
 
@@ -103,6 +104,7 @@ const handleMouseOut = (e) => {
 
 const handleTouchStart = (e) => {
   touchStartY.value = e.touches[0].clientY
+  touchStartTime.value = Date.now()
 }
 
 const handleTouchMove = (e) => {
@@ -111,8 +113,10 @@ const handleTouchMove = (e) => {
 
 const handleTouchEnd = () => {
   const diff = touchStartY.value - touchEndY.value
+  const duration = Date.now() - touchStartTime.value
 
-  if (Math.abs(diff) < 50) return
+  if (duration < 150) return
+  if (Math.abs(diff) < 70) return
   if (isNavigating.value) return
   if (isOverMap.value) return
 
