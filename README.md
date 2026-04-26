@@ -1,4 +1,4 @@
-Live Demo: https://exeterss.vercel.app/  
+Live Demo: https://exetermv.vercel.app/  
 Started: April 2025
 
 ## Overview
